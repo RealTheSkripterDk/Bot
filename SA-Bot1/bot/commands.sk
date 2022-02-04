@@ -1,0 +1,28 @@
+command /bot [<text>] [<text>] [<text>]:
+	trigger:
+		set {_p} to yaml value "Prefix.server" in "bot.config"
+		set {_r} to yaml value "Prefix.Error" in "bot.config"
+		set {_r1} to yaml value "Message.noperm" in "bot.config"
+		set {_ver} to yaml value "version" in "bot.config"
+		if player don't have permission "bot.staff":
+			send "%{_r}% %{_r1}%" to player
+		else:
+			set {_t} to yaml value "Prefix.server" in "bot.config"
+			if arg-1 is "update":
+				if {_ver} is "1.0.0":
+					send "Der er ingen "
+				else:
+					download from url "https://pastebin.com/raw/tHgWVYnu" to file path "plugins/Skript/scripts/Bot/commands.sk"
+					download from url "https://pastebin.com/raw/7RNWHmtF" to file path "plugins/Skript/scripts/Bot/Update.sk"
+					download from url "https://pastebin.com/raw/wxi5Ldzb" to file path "plugins/Skript/scripts/Bot/config.yml"
+			if arg-1 is "help" or "Hjælp":
+				send "%{_t}% Join denne Discord hvis du skal have hjælp til skriptet." to player
+			if arg-1 is "reload":
+				execute server command "/sk reload Bot/"
+				send "&cDiscordBot reloaded &4%{_ver}%"
+			if arg-1 is "download":
+				if arg-2 isn't set:
+					send "%{_p}% Skrev /Bot download <Pakke>"
+				if arg-2 is "list":
+					set {_pakker} to text from "https://pastebin.com/raw/CT4g2mkR"
+					send "%{_pakker}%"

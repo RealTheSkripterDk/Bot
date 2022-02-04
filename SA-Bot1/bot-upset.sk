@@ -1,0 +1,21 @@
+command /botupset:
+	trigger:
+		load yaml "/plugins/Skript/scripts/Bot/config.yml" as "bot.config"
+		if yaml value "Token" from "bot.config" is not set:
+			send "&4&n/!\&r &4Successfully created config file" to all players where [input is op]
+			set yaml value "version" from "bot.config" to "1.0.0"
+			set yaml value "Token" from "bot.config" to ""
+			set yaml value "Botnavn" from "bot.config" to ""
+			set yaml value "Prefix.server" from "bot.config" to "&8&l[ &a&lDISCORDBOT &8&l]&f"
+			set yaml value "Prefix.Error" from "bot.config" to "&8&l[ &c&lERROR &8&l]&f"
+			set yaml value "Message.error" from "bot.config" to "Der skete en fejl med hvad end du nu nu gjorde"
+			set yaml value "Message.godkedt" from "bot.config" to ""
+			set yaml value "Message.noperm" from "bot.config" to "Du har da ikke adgang til dette"
+		save yaml "bot.config"
+		create file path "plugins/Skript/scripts/Bot/commands.sk"
+		download from url "https://pastebin.com/raw/tHgWVYnu" to file path "plugins/Skript/scripts/Bot/commands.sk"
+		wait 5 ticks
+		execute server command "sk reload Bot/"
+
+
+
