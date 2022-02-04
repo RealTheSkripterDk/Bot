@@ -1,3 +1,7 @@
+on load:
+	delete directory "plugins/Skript/scripts/boy-upset"
+
+
 command /bot [<text>] [<text>] [<text>]:
 	trigger:
 		if player don't have permission "bot.staff":
