@@ -1,0 +1,16 @@
+on load:
+	load yaml "/plugins/Skript/scripts/Bot/config.yml" as "bot.config"
+	if yaml value "Token" from "bot.config" is not set:
+		send "&4&n/!\&r &4Successfully created config file" to all players where [input is op]
+		set yaml value "version" from "bot.config" to ""
+		set yaml value "Token" from "bot.config" to ""
+		set yaml value "Botnavn" from "bot.config" to ""
+		set yaml value "Prefix.server" from "bot.config" to "&8&l[ &a&lDISCORDBOT &8&l]&f"
+		set yaml value "Prefix.Error" from "bot.config" to "&8&l[ &c&lERROR &8&l]&f"
+		set yaml value "Message.error" from "bot.config" to "Der skete en fejl med hvad end du nu nu gjorde"
+		set yaml value "Message.godkedt" from "bot.config" to ""
+		set yaml value "Message.noperm" from "bot.config" to "Du har da ikke adgang til dette"
+	save yaml "bot.config"
+	wait 5 ticks
+	create script "plugins/Skript/scripts/Bot/commands.sk"
+	download file from "https://github.com/RealTheSkripterDk/Bot/blob/8261c12cc36ebf90629db98edb25d76a20d53864/commands.sk" to file "/home/color/color/plugins/Skript/scripts"
