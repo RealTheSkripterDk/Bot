@@ -1,7 +1,0 @@
-on join:
-	set {_version} to yaml value "version" in "bot.config"
-	if {_version} isn't "1.1.2":
-		if player is op:
-			send "&4&n/!\&r &4Der er kommet en nu opdatering til Discordbot helt den ved at skrive &c/bot update" to player
-	else:
-		stop
